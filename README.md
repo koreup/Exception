@@ -78,6 +78,54 @@ int main () {
 
 ```
 
+```javascript
+
+
+#include <iostream>
+#include <exception>
+#include <memory> //unique_ptr: if only one obj needs access to the underlying pointer  (smart pointer)
+
+
+class Speaker{
+    private:
+        std::string name;
+    public:
+        Speaker(){
+            std::cout<< "Default constructing \"\""<<std::endl;   
+        }
+        Speaker(std::string n) : name(n){
+            std::cout<<" constructing \""<<name<<"\""<<std::endl;// constructor acquires resorce
+        }
+        ~Speaker(){
+            std::cout<<"Destructing \""<<name<<"\""<<std::endl; //Destructor releases resource
+        }
+    
+};
+
+void RAIIexample()
+{
+    try{
+        Speaker spk("Hey");
+        // Speaker* pt{new Speaker{"dynamically allocated an obj in the heap"}};      //raw pointer doesn't have a destructor, so manual deletion is required
+        std::unique_ptr<Speaker> pt{new Speaker{"dynamically allocated an obj in the heap"}}; // unique pointer comes with a destructor, so we don't need to manually delete it
+        throw (std::exception{"Throw a message plz!"});
+        // delete pt;
+    }catch(const std::exception& e){
+        std::cout <<"Exception caught: "<< e.what()<<std::endl;
+    }
+}
+
+int main()
+{
+    // Speaker nonamehere;
+    // Speaker spk("Spiderman");
+    
+    RAIIexample();
+    return 0;
+}
+
+```
+
 
 9. write your own exception by extending std::exception class
 ```javascript
