@@ -78,9 +78,10 @@ int main () {
 
 ```
 
+6. identify Exception-Safe Implementation Techniques such as try block and ‘‘resource acquisition is initialization’’ technique ( RAII)
+7. demonstrate try catch block and throw
+8. demonstrate RAII
 ```javascript
-
-
 #include <iostream>
 #include <exception>
 #include <memory> //unique_ptr: if only one obj needs access to the underlying pointer  (smart pointer)
