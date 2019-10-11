@@ -53,6 +53,32 @@ int main()
 }
 
 ```
+
+5. create few example types of  exceptions; ex. you can try array out of bounds exception, file not found and more
+```javascript
+ 
+#include <iostream.h>
+
+int main () {
+  char myarray[10];
+  try
+  {
+    for (int n=0; n<=10; n++)
+    {
+      if (n>9) throw "Out of range";
+      myarray[n]='z';
+    }
+  }
+  catch (char * str)
+  {
+    cout << "Exception: " << str << endl;
+  }
+  return 0;
+}
+
+```
+
+
 9. write your own exception by extending std::exception class
 ```javascript
 #include <iostream>
