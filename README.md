@@ -18,9 +18,8 @@
 
 2. understand the types of errors and exceptions
 3. identify types of exceptions and their occurrences
-4. understand throwing an exception
-
-7.demonstrate try catch block and throw
+4. understand throwing an exception 
+7. demonstrate try catch block and throw
 ```javascript
 #include <iostream>
 #include<string> 
