@@ -88,19 +88,19 @@ int main () {
 
 
 class Speaker{
-    private:
-        std::string name;
-    public:
-        Speaker(){
-            std::cout<< "Default constructing \"\""<<std::endl;   
-        }
-        Speaker(std::string n) : name(n){
-            std::cout<<" constructing \""<<name<<"\""<<std::endl;// constructor acquires resorce
-        }
-        ~Speaker(){
-            std::cout<<"Destructing \""<<name<<"\""<<std::endl; //Destructor releases resource
-        }
-    
+private:
+    std::string name;
+public:
+    Speaker(){
+        std::cout<< "Default constructing \"\""<<std::endl;
+    }
+    Speaker(std::string n) : name(n){
+        std::cout<<" constructing \""<<name<<"\""<<std::endl;// constructor acquires resorce
+    }
+    ~Speaker(){
+        std::cout<<"Destructing \""<<name<<"\""<<std::endl; //Destructor releases resource
+    }
+
 };
 
 void RAIIexample()
@@ -109,7 +109,7 @@ void RAIIexample()
         Speaker spk("Hey");
         // Speaker* pt{new Speaker{"dynamically allocated an obj in the heap"}};      //raw pointer doesn't have a destructor, so manual deletion is required
         std::unique_ptr<Speaker> pt{new Speaker{"dynamically allocated an obj in the heap"}}; // unique pointer comes with a destructor, so we don't need to manually delete it
-        throw (std::exception{"Throw a message plz!"});
+        throw ("Throw a message plz!");
         // delete pt;
     }catch(const std::exception& e){
         std::cout <<"Exception caught: "<< e.what()<<std::endl;
@@ -120,7 +120,7 @@ int main()
 {
     // Speaker nonamehere;
     // Speaker spk("Spiderman");
-    
+
     RAIIexample();
     return 0;
 }
