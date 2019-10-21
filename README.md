@@ -75,7 +75,27 @@ int main () {
   }
   return 0;
 }
+////////////// Another Array Out of Bounds using std::out_of_bounds();\\\\\\\\\\\\\\\\
+#include <iostream>
+using namespace std;
 
+int main () {
+    char myarray[10];
+    try
+    {
+        for (int n=0; n<=10; n++)
+        {
+            if (n>9) throw std::out_of_range("Array out of bounds!");
+            myarray[n]='z';
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        cout << "Exception: " << ex.what() << endl;
+    }
+    return 0;
+}
+////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\
 ```
 
 6. identify Exception-Safe Implementation Techniques such as try block and ‘‘resource acquisition is initialization’’ technique ( RAII)
